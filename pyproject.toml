@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "photo-sorter-ai"
+version = "1.0.0"
+description = "Privacy-first local photo organizer with perceptual similarity clustering and safe file operations."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Radwan Abdulhadi Ahmed"}]
+dependencies = ["Pillow>=10.0"]
+keywords = ["photos", "organizer", "perceptual-hash", "image-similarity"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+photo-sorter = "photo_sorter_ai.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/photo_sorter_ai"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
